@@ -19,3 +19,13 @@
 
 # Go workspace file
 go.work
+
+# Py Cache
+*.pyc
+__pycache__/
+
+# Virtual environment
+venv/
+
+# Lambda code
+*.zip

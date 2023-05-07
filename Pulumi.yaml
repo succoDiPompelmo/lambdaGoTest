@@ -1,4 +1,4 @@
-name: lambdaGo
+name: lambdaGoTest
 runtime:
   name: python
   options:

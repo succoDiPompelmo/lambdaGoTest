@@ -1,8 +1,7 @@
 name: Pulumi
 on:
-  push:
-    branches:
-      - main
+  - workflow_dispatch
+
 jobs:
   update:
     name: Update

@@ -1,4 +1,4 @@
-name: Pulumi
+name: Pulumi UP
 on:
   - workflow_dispatch
 

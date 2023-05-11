@@ -22,3 +22,16 @@ jobs:
 
       - name: Test
         run: go test -v ./...
+    services:
+      localstack:
+        image: localstack/localstack:latest
+        ports:
+          - 4566:4566
+          - 4571:4571
+      rabbitmq:
+        image: rabbitmq
+        env:
+          RABBITMQ_DEFAULT_USER: guest
+          RABBITMQ_DEFAULT_PASS: guest
+        ports:
+          - 5672:5672

@@ -47,7 +47,7 @@ func newTestConfig() *Config {
 		exitErrorf("Unable to establish a new aws session, %v", err)
 	}
 
-	conn, err := rabbitmq.NewConn("amqps://deduukdi:hGLNmhiL2tad6MsHC_4z1H0aKSO12I6R@chimpanzee.rmq.cloudamqp.com/deduukdi")
+	conn, err := rabbitmq.NewConn("amqp://guest:guest@rabbitmq:5672/")
 	if err != nil {
 		exitErrorf("No connection to RabbitMQ host, %v", err)
 	}

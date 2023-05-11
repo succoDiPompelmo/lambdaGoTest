@@ -21,7 +21,9 @@ func TestAdd(t *testing.T) {
 	defer config.Close()
 
 	dat, _ := os.ReadFile("Prova.eml")
-	_, _ = s3.New(config.awsSession).PutObject(&s3.PutObjectInput{
+	s3Client := s3.New(config.awsSession)
+	s3Client.CreateBucket(&s3.CreateBucketInput{Bucket: aws.String("sample-bucket")})
+	_, err := s3Client.PutObject(&s3.PutObjectInput{
 		Bucket:             aws.String("sample-bucket"),
 		Key:                aws.String("index.html"),
 		Body:               bytes.NewReader(dat),
@@ -29,6 +31,10 @@ func TestAdd(t *testing.T) {
 		ContentType:        aws.String(http.DetectContentType(dat)),
 		ContentDisposition: aws.String("attachment"),
 	})
+
+	if err != nil {
+		t.Errorf("got and error uploading the file one the S3 bucket")
+	}
 
 	events := events.S3Event{
 		Records: []events.S3EventRecord{{S3: events.S3Entity{Bucket: events.S3Bucket{Name: "sample-bucket"}, Object: events.S3Object{Key: "index.html"}}}},

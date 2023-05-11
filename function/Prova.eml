@@ -1,0 +1,2106 @@
+Delivered-To: zenari12@gmail.com
+Received: by 2002:a05:6020:34cb:b0:277:4b94:1653 with SMTP id d11csp1581193wdp;
+        Wed, 22 Mar 2023 10:30:43 -0700 (PDT)
+X-Google-Smtp-Source: AK7set+ZmhW6atAImJQJglwHKCEJRBNCcD+SWI6jpgz4WAt9eSrdom48xzqHB7hQsHqIXFnapv7G
+X-Received: by 2002:a17:902:f08a:b0:19e:524f:272f with SMTP id p10-20020a170902f08a00b0019e524f272fmr2773721pla.42.1679506243147;
+        Wed, 22 Mar 2023 10:30:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1679506243; cv=none;
+        d=google.com; s=arc-20160816;
+        b=gic684QL6AcbYm6qDh30CGV0vawVHb/R9o7oDZIOt7qKmMmZIRXrF/ib3sJhArHuTL
+         gKgPPWhoC6K456xGj+4ZeowyvmzNEZ1F9wQPRWeUYaPKyg1sRrXe0hiZ6jzbvjJhVVcT
+         OyYzMbAwAj2ZTB6WAlp4y0lbTcRLMmYETUgeo/j/R5hEadFVOuIuaUSw81WYzbmfSgIR
+         vH/5NM+WGPfv9M3JMYrTVoFt2G6UljcQTLhtujM/K9ASTEskXAy0TwQt+Nc6vkeRU1ks
+         syHy9RPKGmJmeq3mXpoH52x9K5quj+ZDyi/F5Jr2v7djFvPn7aDQ+wpdI3W4Kd0nwBfZ
+         HtXw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=reply-to:message-id:date:to:from:subject:mime-version
+         :dkim-signature;
+        bh=9IeDrFFW4IswUYg+6cRw6prdBKDzWapQfycZVChJj/I=;
+        b=BL2/Eat3+TvXLOveyTjRRtqGGbLzknzOh2Xr1SB25Q21n8ZMT+v9qeWE7DZKLYpY17
+         8J7KCDdddesZzbtSmOM2Ar4SKYXefL84bky6+R/t7DId8pWaG6nupeTt/z/kEI9Ol3xp
+         17QFhPbrUAZookYlUI2QhWCAWKzVD+p76m0IEgxeNRVrwN0qc0HqjJSiKGoyXAuyiPyP
+         7PWqxPYN9YEoMfXvwAyCekC1QdROARtbK1MXB55RZ2Y0xwUXu+0nIyX+PN09kmXPjH50
+         Ox8LBtvrBzlriIIU5zpc/zYHoFq+AB5v3D7QLLYgnOWtCUEKHhxzS6xWUltGbH7KPs2k
+         +OKQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@event.eventbrite.com header.s=scph0420 header.b=D7yd8y3E;
+       spf=pass (google.com: domain of msprvs1=19445f4h3uuzr=bounces-274689@bounce.eventbrite.com designates 156.70.3.139 as permitted sender) smtp.mailfrom="msprvs1=19445F4H3UUZR=bounces-274689@bounce.eventbrite.com";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=eventbrite.com
+Return-Path: <msprvs1=19445F4H3UUZR=bounces-274689@bounce.eventbrite.com>
+Received: from mta-70-3-139.eventbrite.com.sparkpostmail.com (mta-70-3-139.eventbrite.com.sparkpostmail.com. [156.70.3.139])
+        by mx.google.com with ESMTPS id y20-20020a1709029b9400b001990edf3d3csi15482907plp.251.2023.03.22.10.30.42
+        for <zenari12@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 22 Mar 2023 10:30:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of msprvs1=19445f4h3uuzr=bounces-274689@bounce.eventbrite.com designates 156.70.3.139 as permitted sender) client-ip=156.70.3.139;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@event.eventbrite.com header.s=scph0420 header.b=D7yd8y3E;
+       spf=pass (google.com: domain of msprvs1=19445f4h3uuzr=bounces-274689@bounce.eventbrite.com designates 156.70.3.139 as permitted sender) smtp.mailfrom="msprvs1=19445F4H3UUZR=bounces-274689@bounce.eventbrite.com";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=eventbrite.com
+X-MSFBL: Z68ZVPxada7xRho1WL/7TSrYo/kLx88mr9Q25BVlzzE=|eyJzdWJhY2NvdW50X2l
+	kIjoiMCIsImN1c3RvbWVyX2lkIjoiMjc0Njg5IiwidGVuYW50X2lkIjoic3BjIiw
+	ibWVzc2FnZV9pZCI6IjY0MTM0MjNiMWI2NDZjMjQ0YjQ3IiwiciI6InplbmFyaTE
+	yQGdtYWlsLmNvbSJ9
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=event.eventbrite.com; s=scph0420; t=1679506242;
+	i=@event.eventbrite.com;
+	bh=9IeDrFFW4IswUYg+6cRw6prdBKDzWapQfycZVChJj/I=;
+	h=Content-Type:Subject:From:To:Date:Message-ID:From:To:Cc:Subject;
+	b=D7yd8y3EbfKEJXBizV0d2nlhro7V5onzcEWgv6weXmDc1EyGatd70NbF+shl2pNPs
+	 8G5WBeTn17XDikdm+eFJhxjoP36c4Mm2wa4HXYHVfdL5WaRM9uxrNKC2z1hyfbGMsn
+	 jLDLuV2nvzArvyMICF6VN9017/+2k41zr2+Sn5vs=
+Authentication-Results:  ga.mta1vsmtp.cc.prd.sparkpost smtp.user=<hidden>; auth=pass (LOGIN)
+Received: from [50.19.117.164] ([50.19.117.164:35666] helo=prod-core-mta1.aws-us-east-1.evbops.com)
+	by ga.mta1vsmtp.cc.prd.sparkpost (envelope-from <bounces@bounce.eventbrite.com>)
+	(ecelerity 4.4.0.18004 r(msys-ecelerity:tags/4.4.0.50)) with ESMTPA
+	id B4/74-41097-24B3B146; Wed, 22 Mar 2023 17:30:42 +0000
+Received: from prod-task-app12.aws-us-east-1.evbops.com (prod-task-app12.aws-us-east-1.evbops.com [172.21.210.131])
+	by prod-core-mta1.aws-us-east-1.evbops.com (Postfix) with ESMTPSA id 2CE06177D99
+	for <zenari12@gmail.com>; Wed, 22 Mar 2023 10:30:42 -0700 (PDT)
+Received: from 438de2b36491 (unknown [172.17.0.4])
+	by prod-task-app12.aws-us-east-1.evbops.com (Postfix) with ESMTP id 1F0FB2F0396
+	for <zenari12@gmail.com>; Wed, 22 Mar 2023 10:30:42 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============4930062045939861730=="
+MIME-Version: 1.0
+Subject: Logistica per Concorrenza strutturata e coroutine in Java e Kotlin
+From: "JUG Milano" <noreply@event.eventbrite.com>
+To: zenari12@gmail.com
+Date: Wed, 22 Mar 2023 17:30:42 -0000
+Message-ID: <20230322173042.1978.36925@438de2b36491>
+x-campaignid: attendee-lifecycle:reminder-48hr
+Reply-To: matteo.mortari@gmail.com
+X-EventbriteMailer: core
+
+--===============4930062045939861730==
+Content-Type: multipart/alternative;
+ boundary="===============0239888880103831763=="
+MIME-Version: 1.0
+
+--===============0239888880103831763==
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+
+Eventbrite=0D=0A =0D=0A=0D=0A=0D=0A=0D=0A    =0D=0A=0D=0AYour event <a href=
+=3D"https://www.eventbrite.com/e/concorrenza-strutturata-e-coroutine-in-jav=
+a-e-kotlin-tickets-581459690587=3Futm_source=3Deventbrite&utm_medium=3Demai=
+l&utm_campaign=3Dreminder_attendees_48hour_email&utm_term=3Deventname&ref=
+=3Deemaileventremind" style=3D"text-decoration: none; color: #3D64FF; font-=
+weight:normal;">Concorrenza strutturata e coroutine in Java e Kotlin</a> is=
+ coming up soon!=0D=0A=0D=0A=0D=0A    =0D=0AThursday at 6:30 PM=0D=0A=0D=0A=
+=0D=0A        =0D=0A    =0D=0AOrganized by JUG Milano=0D=0A=0D=0A----------=
+--------------------------------------------------------------=0D=0A=0D=0A=
+=0D=0A    =0D=0A----=0D=0A=0D=0A=0D=0A            =0D=0A----=0D=0A=0D=0A   =
+         =0D=0A=0D=0ADon&#39;t forget your tickets=0D=0A=0D=0A=0D=0A       =
+ download here=0D=0A        https://www.eventbrite.com/safe-redirect=3Fnext=
+=3Dhttps%3A%2F%2Fwww.eventbrite.com%2Fprint-ticket%2F6084980149%2F579720529=
+-6084980149-tickets.pdf%2F%3Fc%3DMjAyMy0wMy0xMSAwMzozMDo1Mw%253D%253D%250A%=
+26utm_source%3Deb_email%26utm_medium%3Demail%26utm_campaign%3Dorder_confirm=
+%26sig%3DAHTu1yan2dYm31a5PPc6RQxQMXAsc9FHFg&amp;key=3DAH_ElWFvI22LXkGCE-dOE=
+AZ5T4t5gfc54Q=0D=0A=0D=0A--------------------------------------------------=
+----------------------=0D=0A=0D=0A=0D=0A=0D=0A    =0D=0A----=0D=0A=0D=0A   =
+ =0D=0A=0D=0AQuestions about this event=3F=0D=0A=0D=0A    =0D=0AContact the=
+ organizer: http://www.eventbrite.com/e/581459690587=3Fcontact_organizer=3D=
+1=0D=0A=0D=0A--------------------------------------------------------------=
+----------=0D=0A=0D=0A=0D=0A=0D=0A    =0D=0A    =0D=0A----=0D=0A=0D=0A    =
+=0D=0A=0D=0AAbout this event=0D=0A=0D=0A        =0D=0AThursday, March 23, 2=
+023 from 6:30 PM to 8:30 PM (CET)=0D=0A=0D=0A=0D=0A=0D=0A        =0D=0A    =
+=0D=0AeDreams ODIGEO<BR>Via Fara 26<BR>20124 Milano<BR>Italy=0D=0A=0D=0A---=
+---------------------------------------------------------------------=0D=0A=
+=0D=0A=0D=0A    =0D=0A    =0D=0A----=0D=0A=0D=0A    =0D=0A=0D=0AGrazie per =
+esserti registrato e consentire cos=C3=AC la priorit=C3=A0 per l&#39;access=
+o in presenza! =0D=0AINFORMAZIONE LOGISTICHE: =0D=0APer accedere all&#39;ev=
+ento: =0D=0AINGRESSO A: da Via Fara, 26: la portineria stradale con le scal=
+e bianche sar=C3=A0 chiusa; sulla destra troverai un cancello a sbarre vert=
+icali grigio in metallo, l&#39;accesso pedonale rimane aperto. Entrando, su=
+bito sul retro dell&#39;edificio, trovi una scalinata analoga sempre per la=
+ reception, e uno di noi sar=C3=A0 in loco per consentirti l&#39;accesso. =
+=0D=0AINGRESSO B: da Via Pirelli 20, lasciati sulla sinistra l&#39;ingresso=
+ del hotel Hyatt Centric Milan Centrale (se illuminato sembra un case RGB d=
+a gamer) ed entra nella corte interna parcheggio con sbarra; entrando, sull=
+a sinistra, trovi il retro dell&#39;edificio di cui al punto sopra. =0D=0A=
+=C2=A0 =0D=0AAlle volte l&#39;INGRESSO A potrebbe non essere percorribile c=
+ausa cantiere. =0D=0A=C2=A0 =0D=0AIl talk parte alle 18:30, ti chiediamo di=
+ essere puntuale, puoi venire anche qualche minuto prima se vuoi diciamo da=
+lle 18:10 in avanti sarebbe l&#39;ideale cos=C3=AC puoi assicurarti il post=
+o che preferisci in Townhall. =0D=0ASe non puoi/potrai pi=C3=B9 partecipare=
+, ti chiediamo di cancellare il biglietto su Eventbrite, in modo da lasciar=
+e un posto ad altri se necessario. =0D=0A=C2=A0 =0D=0APer contatti: Telegra=
+m @tarilabs https://t.me/tarilabs=0D=0A=0D=0A------------------------------=
+------------------------------------------=0D=0A=0D=0A=0D=0A=0D=0A=0D=0A=0D=
+=0A=0D=0A=0D=0A=0D=0A=0D=0A=0D=0A=0D=0AQuestions=3F Contact us anytime day =
+or night.=0D=0Ahttps://www.eventbrite.com/support/contact-us=0D=0A=0D=0A- T=
+he Eventbrite Team=0D=0A=0D=0A=0D=0AView our user agreement and privacy pol=
+icy if you have further questions:=0D=0Ahttp://www.eventbrite.com/tos=0D=0A=
+http://www.eventbrite.com/tos#privacy=0D=0A=0D=0A=0D=0ACopyright 2023 Event=
+brite. All rights reserved.=0D=0AEventbrite is located at 155 5th St, San F=
+rancisco, CA 94103.=0D=0A=0D=0A=0D=0A
+--===============0239888880103831763==
+Content-Transfer-Encoding: 7bit
+Content-Type: text/html; charset="utf-8"
+MIME-Version: 1.0
+
+
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="viewport" content="width=device-width">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<!-- Turn off iOS phone number autodetect -->
+<meta name="format-detection" content="telephone=no">
+
+<style>
+    body, p {
+        font-family: -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", Helvetica, Tahoma, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -webkit-text-size-adjust: none;
+    }
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+        border: 0;
+        padding: 0;
+    }
+    img {
+        margin: 0;
+        padding: 0;
+    }
+
+    .content {
+        width: 600px;
+    }
+
+    .no_text_resize {
+        -moz-text-size-adjust: none;
+        -webkit-text-size-adjust: none;
+        -ms-text-size-adjust: none;
+        text-size-adjust: none;
+    }
+
+    /* Media Queries */
+    @media all and (max-width: 600px) {
+
+        table[class="content"] {
+            width: 100% !important;
+        }
+
+        tr[class="grid-no-gutter"] td[class="grid__col"] {
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+        }
+
+        td[class="grid__col"] {
+            padding-left: 15px !important;
+            padding-right: 15px !important;
+        }
+
+        tr[class="small_full_width"] td[class="grid__col"] {
+            padding-left: 0px !important;
+            padding-right: 0px !important;
+        }
+
+        table[class="small_full_width"] {
+            width: 100% !important;
+            padding-bottom: 10px;
+        }
+
+        a[class="header-link"] {
+            margin-right: 0 !important;
+            margin-left: 10px !important;
+        }
+
+        a[class="btn"] {
+            width: 100%;
+            border-left-width: 0px !important;
+            border-right-width: 0px !important;
+        }
+
+        table[class="col-layout"] {
+            width: 100% !important;
+        }
+
+        td[class="col-container"] {
+            display: block !important;
+            width: 100% !important;
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+        }
+
+        td[class="col-nav-items"] {
+            display: inline-block !important;
+            padding-left: 0 !important;
+            padding-right: 10px !important;
+            background: none !important;
+        }
+
+        img[class="col-img"] {
+            height: auto !important;
+            max-width: 520px !important;
+            width: 100% !important;
+        }
+
+        td[class="col-center-sm"] {
+            text-align: center;
+        }
+
+        td[class="footer-links"] {
+            text-align: left !important;
+        }
+
+        .hide-for-small {
+            display: none !important;
+        }
+
+        .ribbon-mobile {
+            line-height: 1.3 !important;
+        }
+
+        .small_full_width {
+            width: 100% !important;
+            padding-bottom: 10px;
+        }
+
+        .table__ridge {
+            height: 7px !important;
+        }
+
+        .table__ridge img {
+            display: none !important;
+        }
+
+        .table__ridge--top {
+            background-image: url(https://cdn.evbstatic.com/s3-s3/marketing/emails/modules/ridges_top_fullx2.jpg) !important;
+            background-size: 170% 7px;
+        }
+
+        .table__ridge--bottom {
+            background-image: url(https://cdn.evbstatic.com/s3-s3/marketing/emails/modules/ridges_bottom_fullx2.jpg) !important;
+            background-size: 170% 7px;
+        }
+
+        .summary-table__total {
+            padding-right: 10px !important;
+        }
+
+        .app-cta {
+            display: none !important;
+        }
+
+        .app-cta__mobile {
+            width: 100% !important;
+            height: auto !important;
+            max-height: none !important;
+            overflow: visible !important;
+            float: none !important;
+            display: block !important;
+            margin-top: 12px !important;
+            visibility: visible;
+            font-size: inherit !important;
+        }
+
+        /* List Event Cards */
+        .list-card__header {
+            width: 130px !important;
+        }
+        .list-card__label {
+            width: 130px !important;
+        }
+        .list-card__image-wrapper {
+            width: 130px !important;
+            height: 65px !important;
+        }
+        .list-card__image {
+            max-width: 130px !important;
+            max-height: 65px !important;
+        }
+
+        .list-card__body {
+            padding-left: 10px !important;
+        }
+
+        .list-card__title {
+            margin-bottom: 10px !important;
+        }
+
+        .list-card__date {
+            padding-top: 0 !important;
+        }
+    }
+
+    @media all and (device-width: 768px) and (device-height: 1024px) and (orientation:landscape) {
+        .ribbon-mobile {
+            line-height: 1.3 !important;
+        }
+
+        .ribbon-mobile__text {
+            padding: 0 !important;
+        }
+    }
+
+    @media all and (device-width: 768px) and (device-height: 1024px) and (orientation:portrait) {
+        .ribbon-mobile {
+            line-height: 1.3 !important;
+        }
+
+        .ribbon-mobile__text {
+            padding: 0 !important;
+        }
+    }
+
+    @media screen and (min-device-height:480px) and (max-device-height:568px), (min-device-width : 375px) and (max-device-width : 667px) and (-webkit-min-device-pixel-ratio : 2), (min-device-width : 414px) and (max-device-width : 736px) and (-webkit-min-device-pixel-ratio : 3) {
+
+        .hide_for_iphone {
+            display: none !important;
+        }
+
+        .passbook {
+            width: auto !important;
+            height: auto !important;
+            line-height: auto !important;
+            visibility: visible !important;
+            display: block !important;
+            max-height: none !important;
+            overflow: visible !important;
+            float: none !important;
+            text-indent: 0 !important;
+            font-size: inherit !important;
+        }
+    }
+</style>
+
+</head>
+
+<!-- Global container with background styles. Gmail converts BODY to DIV so we lose properties like BGCOLOR. -->
+<body border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" bgcolor="#F8F7FA" style="margin: 0;">
+<div style="color:transparent;visibility:hidden;opacity:0;font-size:0px;border:0;max-height:1px;width:1px;margin:0px;padding:0px;border-width:0px!important;display:none!important;line-height:0px!important;"><img border="0" width="1" height="1" src="https://clicks.eventbrite.com/q/FHVnX9Mc1HD6IzJ8XqjYIg~~/AAQxAQA~/RgRl_G7CPVcDc3BjQgpkE0I7G2RsJEtHUhJ6ZW5hcmkxMkBnbWFpbC5jb21YBAAAAAA~" alt=""/></div>
+
+
+
+
+
+<table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" bgcolor="#F8F7FA">
+
+    <tr>
+        <td style="padding-right: 10px; padding-left: 10px;">
+        <!-- Outlook Hack (doesn't support max-width property until 2013)  -->
+        <!--[if (gte mso 9)|(IE)]>
+        <table width="600" align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="#F8F7FA">
+            <tr>
+                <td>
+        <![endif]-->
+        <table class="content" align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="#F8F7FA" style="width: 600px; max-width: 600px;">
+            <tr>
+                <td width="33%" valign="middle" style="text-align: left; padding: 30px 0 20px 0;">
+                    <a href="http://www.eventbrite.com/?utm_source=eventbrite&utm_medium=email&utm_campaign=reminder_attendees_48hour_email&utm_term=eb_logo">
+                        <img src="https://cdn.evbstatic.com/s3-build/perm_001/2641ef/django/images/email/base/big-brand.png" width="136" height="22" border="0" alt="Eventbrite" style="width:136px; height:22px;" />
+                    </a>
+                </td>
+                <td width="66%" valign="middle" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-align: right; padding-top: 12px; vertical-align: middle;">
+                    
+    
+    
+    <div class="header_defer no_text_resize" style="
+    -moz-text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+    text-size-adjust: none;
+">
+        
+
+    <a style="text-decoration: none; color: #3D64FF; font-family: -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica neue', Helvetica, Tahoma, Arial, sans-serif; font-size:13px; font-weight:500; color:#aaa; text-decoration:none;" href="https://www.eventbrite.com/directory/?utm_source=eventbrite&utm_medium=email&utm_campaign=reminder_attendees_48hour_email&utm_term=findtickets&ref=eemaileventremind" class=""
+    >Find events</a>
+        
+
+    <a style="text-decoration: none; color: #3D64FF; font-family: -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica neue', Helvetica, Tahoma, Arial, sans-serif; font-size:13px; font-weight:500; color:#aaa; text-decoration:none;padding-left: 20px;" href="https://www.eventbrite.com/mytickets/?utm_source=eventbrite&utm_medium=email&utm_campaign=reminder_attendees_48hour_email&utm_term=mytickets&ref=eemaileventremind" class=""
+    >My Tickets</a>
+    </div>
+
+
+
+                </td>
+            </tr>
+        </table>
+        <!--[if (gte mso 9)|(IE)]>
+                </td>
+            </tr>
+        </table>
+        <![endif]-->
+        </td>
+    </tr>
+    <tr>
+        <td>
+        <!--[if (gte mso 9)|(IE)]>
+        <table width="600" align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="#FFFFFF">
+            <tr>
+                <td>
+        <![endif]-->
+        <table class="content" align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="#F8F7FA" style="width: 600px; max-width: 600px;">
+            <tr>
+                <td colspan="2" style="background: #fff; border-radius: 8px;">
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tr>
+                            <td style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;">
+                                
+
+
+
+
+
+        
+<style>
+    @media (max-device-width: 640px) {
+        .organized_by {
+            font-size: 14px !important;
+        }
+
+        .ticket-section__or {
+            padding: 12px 0 14px 0 !important;
+        }
+
+        .your-account__logo {
+            margin-top: 8px;
+        }
+    }
+
+    @media screen and (min-device-height:480px) and (max-device-height:568px) {
+        h2 {
+            font-weight: 600 !important;
+        }
+
+        .header_defer {
+            font-size: 12px;
+        }
+    }
+</style>
+
+
+    
+    <tr class="">
+        <td class="grid__col" style="font-family: -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica neue', Helvetica, Tahoma, Arial, sans-serif; padding: 32px 40px; border-radius:6px 6px 0 0;" align="">
+            
+        
+    
+
+<h2 style="color: #404040; font-weight: 300; margin: 0 0 12px 0; font-size: 24px; line-height: 30px; font-family: -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica neue', Helvetica, Tahoma, Arial, sans-serif; " class="">
+
+    
+    Your event <a href="https://www.eventbrite.com/e/concorrenza-strutturata-e-coroutine-in-java-e-kotlin-tickets-581459690587?utm_source=eventbrite&utm_medium=email&utm_campaign=reminder_attendees_48hour_email&utm_term=eventname&ref=eemaileventremind" style="text-decoration: none; color: #3D64FF; font-weight:normal;">Concorrenza strutturata e coroutine in Java e Kotlin</a> is coming up soon!
+    
+</h2>
+
+
+    
+    
+
+<div style="color: #666666; font-weight: 400; font-size: 15px; line-height: 21px; font-family: -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica neue', Helvetica, Tahoma, Arial, sans-serif; font-weight: 300; " class="">
+    
+    
+            Thursday at 6:30 PM
+    
+    
+</div>
+
+
+
+        
+    
+    
+
+<div style="color: #666666; font-weight: 400; font-size: 15px; line-height: 21px; font-family: -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica neue', Helvetica, Tahoma, Arial, sans-serif; font-weight: 300; " class="organized_by">
+    
+    
+            Organized by <a href="https://www.eventbrite.com/o/jug-milano-28234569107?utm_source=eventbrite&utm_medium=email&utm_campaign=reminder_attendees_48hour_email&utm_term=orgname&ref=eemaileventremind" style="color:#999;">JUG Milano</a>
+    
+    
+</div>
+
+
+
+
+    
+        </td>
+    </tr>
+
+
+    
+<tr>
+    <td style="padding: 0 40px;">
+        
+<table cellspacing="0" cellpadding="0" width="100%" style="width: 100%; min-width: 100%;" class="">
+    <tr>
+        <td style="background-color: #dedede; width: 100%; min-width: 100%; font-size: 1px; height: 1px; line-height: 1px; " class="">&nbsp;
+        </td>
+    </tr>
+</table>
+
+    </td>
+</tr>
+
+
+            
+<tr>
+    <td style="padding: 0 40px;">
+        
+<table cellspacing="0" cellpadding="0" width="100%" style="width: 100%; min-width: 100%;" class="">
+    <tr>
+        <td style="background-color: #dedede; width: 100%; min-width: 100%; font-size: 1px; height: 1px; line-height: 1px; " class="">&nbsp;
+        </td>
+    </tr>
+</table>
+
+    </td>
+</tr>
+
+            
+    <tr class="attendee-email-data-automation">
+        <td class="grid__col" style="font-family: -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica neue', Helvetica, Tahoma, Arial, sans-serif; padding: 32px 40px; " align="">
+            
+                
+
+        
+
+<h2 style="color: #404040; font-weight: 300; margin: 0 0 12px 0; font-size: 24px; line-height: 30px; font-family: -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica neue', Helvetica, Tahoma, Arial, sans-serif; margin-bottom:18px;" class="">
+
+            Don&#39;t forget your tickets
+        
+</h2>
+
+
+
+        
+
+        
+<table cellpadding="0" cellspacing="0" border="0" align="left" style="width:215px; text-align:center; overflow:hidden;" class="small_full_width ">
+    <tr>
+        <td>
+            
+            
+
+    <a style="text-decoration: none; color: #3D64FF; font-family: -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica neue', Helvetica, Tahoma, Arial, sans-serif; " href="https://www.eventbrite.com/mytickets/6084980149" class=""
+    >
+        
+                
+
+<img src='https://cdn.evbstatic.com/s3-s3/marketing/emails/order_confirmation/mobile-ticketsx2.png' title='mobile tickets' alt='mobile tickets' style='width:52px; height:67px; ' border="0" width='52' height='67' class=""/>
+
+
+                
+<table width=100% cellspacing="0" cellpadding="0" style="font-weight:bold; margin-bottom:12px;" class="">
+    <tr width="100%">
+        <td width="100%" style="text-align:center;" class="">
+            
+                    Mobile Tickets
+                
+        </td>
+    </tr>
+</table>
+
+            
+    </a>
+
+            
+<table cellspacing="0" cellpadding="0" width='100%' style='' align='' class="">
+    
+                
+<tr style='' class=''>
+    
+                    
+<td width='' height='' style='vertical-align:top;' align='' valign='' class='' colspan='1'>
+    
+                        
+<table cellspacing="0" cellpadding="0" width='' style='' align='right' class="no_text_resize">
+    
+                            
+<tr style='
+    display: block;
+    background-color: #000;
+    border-radius: 4px;
+    color: #fff !important;
+    text-align: left;
+    height: 22px;
+    mso-line-height-rule: exactly;
+    line-height: 1;
+    padding: 3px 6px 3px 6px;
+    margin-top: 1px;
+    font-weight: 500;
+    font-size: 9px;
+    font-family: &#39;Myriad Pro&#39;, &#39;Helvetica Neue&#39;, Helvetica, Arial, sans-serif;
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(0, 0, 0, 0.1)), to(black)), -webkit-gradient(linear, right top, left bottom, color-stop(0, rgba(255, 255, 255, 0.65)), color-stop(0.5, rgba(255, 255, 255, 0.4)), color-stop(0.501, rgba(255, 255, 255, 0.15)), color-stop(1, rgba(255, 255, 255, 0))), black;
+ 
+    -moz-text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+    text-size-adjust: none;
+' class=''>
+    
+                                
+<td width='20' height='22' style='' align='' valign='' class='' colspan='1'>
+    
+                                    
+
+    <a style="text-decoration: none; color: #3D64FF; font-family: -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica neue', Helvetica, Tahoma, Arial, sans-serif; " href="https://itunes.apple.com/us/app/eventbrite-local-events-fun-things-to-do-near-me/id487922291?mt=8&utm_source=eventbrite&utm_medium=attendeeapp&utm_campaign=reminder_email" class=""
+    >
+        
+                                        
+
+<img src='https://cdn.evbstatic.com/s3-s3/marketing/emails/order_confirmation/apple-icon.png' title='' alt='' style='width:14px; height:16px; ' border="0" width='14' height='16' class=""/>
+
+
+                                    
+    </a>
+                                
+</td>
+
+                                
+<td width='' height='' style='min-width:52px;' align='' valign='' class='' colspan='1'>
+    
+                                    
+
+    <a style="text-decoration: none; color: #3D64FF; font-family: -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica neue', Helvetica, Tahoma, Arial, sans-serif; color: #fff !important;" href="https://itunes.apple.com/us/app/eventbrite-local-events-fun-things-to-do-near-me/id487922291?mt=8&utm_source=eventbrite&utm_medium=attendeeapp&utm_campaign=reminder_email" class=""
+    >
+        
+                                        <span style="color: #fff !important;">Available on</span><br />
+                                        <span style="font-size: 1.2em; color: #fff !important;">App Store</span>
+                                    
+    </a>
+                                
+</td>
+
+                            
+</tr>
+
+                        
+</table>
+
+                    
+</td>
+
+                    
+<td width='' height='' style='text-align:left; padding-left:4px;' align='' valign='' class='' colspan='1'>
+    
+                        
+<table width=100% cellspacing="0" cellpadding="0" style="" class="">
+    <tr width="100%">
+        <td width="100%" style="float:left;" class="">
+            
+                            
+
+    <a style="text-decoration: none; color: #3D64FF; font-family: -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica neue', Helvetica, Tahoma, Arial, sans-serif; " href="https://play.google.com/store/apps/details?id=com.eventbrite.attendee&utm_source=eventbrite&utm_medium=attendeeapp&utm_campaign=reminder_email" class="hide_for_iphone"
+    >
+        
+                                
+                                
+<img src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' title='Google Play' alt='Google Play' style='widht:86px;height:30px;' border="0" width='86' height='30' class=""/>
+
+                            
+    </a>
+                        
+        </td>
+    </tr>
+</table>
+
+                        
+<table width=100% cellspacing="0" cellpadding="0" style="" class="">
+    <tr width="100%">
+        <td width="100%" style="
+    overflow: hidden;
+    float: left;
+    display: none;
+    mso-hide: all;
+    font-size: 0;
+    height: 0;
+    line-height: 0;
+    max-height: 0;
+    width: 0;
+    text-indent: -9999px;
+    visibility: hidden;
+    margin: 0;
+    padding: 0;
+" class="passbook">
+            
+                            
+<table cellspacing="0" cellpadding="0" width='' style='
+    display: inline-block;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    border: 1px solid #e5e5e5;
+    color: #77787b !important;
+
+    padding: 3px 6px 3px 6px;
+    margin-left: 4px;
+    text-align: left;
+    line-height: 1;
+    font-size: 9px;
+
+    background: -webkit-gradient(linear, left top, left bottom, from(#fdfdfd), to(#bfc1c2)); -webkit-linear-gradient(#fdfdfd, #bfc1c2); linear-gradient(#fdfdfd, #bfc1c2);
+ mso-hide:all;' align='' class="no_text_resize">
+    
+                                
+<tr style='' class=''>
+    
+                                    
+<td width='22' height='22' style='' align='' valign='' class='' colspan='1'>
+    
+                                        
+
+    <a style="text-decoration: none; color: #3D64FF; font-family: -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica neue', Helvetica, Tahoma, Arial, sans-serif; " href="https://www.eventbrite.com/passes/order/6084980149/?s=AH7gE4T06MmC1GcvFpSIinsgURZPRrsRhg&src=order_email" class=""
+    >
+        
+                                            
+
+<img src='https://cdn.evbstatic.com/s3-s3/marketing/emails/order_confirmation/passbook-icon.png' title='' alt='' style='width:17px; height:18px; ' border="0" width='17' height='18' class=""/>
+
+
+                                        
+    </a>
+                                    
+</td>
+
+                                    
+<td width='' height='' style='' align='' valign='' class='' colspan='1'>
+    
+                                        
+
+    <a style="text-decoration: none; color: #3D64FF; font-family: -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica neue', Helvetica, Tahoma, Arial, sans-serif; " href="https://www.eventbrite.com/passes/order/6084980149/?s=AH7gE4T06MmC1GcvFpSIinsgURZPRrsRhg&src=order_email" class=""
+    >
+        
+                                            <span style="color:#77787b;">Add to</span><br /><span style="color:#221f1f; font-weight:500; font-size:1.2em;">Wallet</span>
+                                        
+    </a>
+                                    
+</td>
+
+                                
+</tr>
+
+                            
+</table>
+
+                        
+        </td>
+    </tr>
+</table>
+
+                    
+</td>
+
+                
+</tr>
+
+            
+</table>
+
+        
+        </td>
+    </tr>
+</table>
+
+
+        
+<table cellpadding="0" cellspacing="0" border="0" align="left" style="text-align:center; padding: 30px 0;" class="small_full_width ticket-section__or">
+    <tr>
+        <td>
+            
+            
+
+<img src='https://cdn.evbstatic.com/s3-s3/marketing/emails/order_confirmation/lottering-divider-leftx2.png' title='' alt='' style='width:26px; height:4px; ' border="0" width='26' height='4' class=""/>
+
+
+            
+<span style='
+    font-size: 22px;
+    font-weight: 600;
+    font-style: italic;
+    color: #ccc;
+    padding: 0 2px;
+    vertical-align: middle;
+' class=''>or</span>
+
+            
+
+<img src='https://cdn.evbstatic.com/s3-s3/marketing/emails/order_confirmation/lottering-divider-rightx2.png' title='' alt='' style='width:26px; height:4px; ' border="0" width='26' height='4' class=""/>
+
+
+        
+        </td>
+    </tr>
+</table>
+
+
+        
+<table cellpadding="0" cellspacing="0" border="0" align="right" style="width:215px; text-align:center; overflow:hidden;" class="small_full_width ">
+    <tr>
+        <td>
+            
+            
+
+    <a style="text-decoration: none; color: #3D64FF; font-family: -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica neue', Helvetica, Tahoma, Arial, sans-serif; " href="https://www.eventbrite.com/safe-redirect?next=https%3A%2F%2Fwww.eventbrite.com%2Fprint-ticket%2F6084980149%2F579720529-6084980149-tickets.pdf%2F%3Fc%3DMjAyMy0wMy0xMSAwMzozMDo1Mw%253D%253D%250A%26utm_source%3Deb_email%26utm_medium%3Demail%26utm_campaign%3Dorder_confirm%26sig%3DAHTu1yan2dYm31a5PPc6RQxQMXAsc9FHFg&key=AH_ElWFvI22LXkGCE-dOEAZ5T4t5gfc54Q&utm_source=eventbrite&utm_medium=email&utm_campaign=reminder_attendees_48hour_email&utm_term=papertickets&ref=eemaileventremind" class=""
+    >
+                         
+
+<img src='https://cdn.evbstatic.com/s3-s3/marketing/emails/order_confirmation/paper-ticketsx2.png' title='paper tickets' alt='paper tickets' style='width:108px; height:59px; margin:5px 0;' border="0" width='108' height='59' class=""/>
+
+
+                
+<table width=100% cellspacing="0" cellpadding="0" style="font-weight:bold; margin-bottom:4px;" class="">
+    <tr width="100%">
+        <td width="100%" style="text-align:center;" class="">
+            
+                    Paper Tickets
+                
+        </td>
+    </tr>
+</table>
+
+            
+    </a>
+
+            
+
+<div style="color: #666666; font-weight: 400; font-size: 15px; line-height: 21px; font-family: -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica neue', Helvetica, Tahoma, Arial, sans-serif; margin-top:0;margin-bottom:0;" class="">
+    
+                    Open the email attachment <br /> or
+                
+
+    <a style="text-decoration: none; color: #3D64FF; font-family: -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica neue', Helvetica, Tahoma, Arial, sans-serif; " href="https://www.eventbrite.com/safe-redirect?next=https%3A%2F%2Fwww.eventbrite.com%2Fprint-ticket%2F6084980149%2F579720529-6084980149-tickets.pdf%2F%3Fc%3DMjAyMy0wMy0xMSAwMzozMDo1Mw%253D%253D%250A%26utm_source%3Deb_email%26utm_medium%3Demail%26utm_campaign%3Dorder_confirm%26sig%3DAHTu1yan2dYm31a5PPc6RQxQMXAsc9FHFg&key=AH_ElWFvI22LXkGCE-dOEAZ5T4t5gfc54Q&utm_source=eventbrite&utm_medium=email&utm_campaign=reminder_attendees_48hour_email&utm_term=paperticketsdownload&ref=eemaileventremind" class=""
+    >download here</a>
+            
+</div>
+
+        
+        </td>
+    </tr>
+</table>
+
+
+
+            
+        </td>
+    </tr>
+
+
+
+    
+<tr>
+    <td style="padding: 0 40px;">
+        
+<table cellspacing="0" cellpadding="0" width="100%" style="width: 100%; min-width: 100%;" class="">
+    <tr>
+        <td style="background-color: #dedede; width: 100%; min-width: 100%; font-size: 1px; height: 1px; line-height: 1px; " class="">&nbsp;
+        </td>
+    </tr>
+</table>
+
+    </td>
+</tr>
+
+    
+    <tr class="">
+        <td class="grid__col" style="font-family: -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica neue', Helvetica, Tahoma, Arial, sans-serif; padding: 32px 40px; " align="">
+            
+        
+    
+
+<h2 style="color: #404040; font-weight: 300; margin: 0 0 12px 0; font-size: 24px; line-height: 30px; font-family: -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica neue', Helvetica, Tahoma, Arial, sans-serif; " class="">
+
+        Questions about this event?
+    
+</h2>
+
+    
+<table width=100% cellspacing="0" cellpadding="0" style="" class="">
+    <tr width="100%">
+        <td width="100%" style="" class="">
+            
+        
+
+<div style="color: #666666; font-weight: 400; font-size: 13px; line-height: 18px; font-family: -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica neue', Helvetica, Tahoma, Arial, sans-serif; " class="">
+    
+                
+    
+    <a href="http://www.eventbrite.com/e/581459690587?contact_organizer=1" style='text-decoration: none; color: #3D64FF; font-weight:normal;'>Contact the organizer</a>
+
+        
+</div>
+
+    
+        </td>
+    </tr>
+</table>
+
+
+    
+        </td>
+    </tr>
+
+
+
+    
+    
+<tr>
+    <td style="padding: 0 40px;">
+        
+<table cellspacing="0" cellpadding="0" width="100%" style="width: 100%; min-width: 100%;" class="">
+    <tr>
+        <td style="background-color: #dedede; width: 100%; min-width: 100%; font-size: 1px; height: 1px; line-height: 1px; " class="">&nbsp;
+        </td>
+    </tr>
+</table>
+
+    </td>
+</tr>
+
+    
+    <tr class="">
+        <td class="grid__col" style="font-family: -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica neue', Helvetica, Tahoma, Arial, sans-serif; padding: 32px 40px; border-radius:0 0 6px 6px;" align="">
+            
+        
+    
+<table cellpadding="0" cellspacing="0" border="0" align="left" style="width:260px; line-height:1.67; font-size:13px;" class="small_full_width ">
+    <tr>
+        <td>
+            
+        
+
+<h2 style="color: #404040; font-weight: 300; margin: 0 0 12px 0; font-size: 24px; line-height: 30px; font-family: -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica neue', Helvetica, Tahoma, Arial, sans-serif; " class="">
+About this event
+</h2>
+
+        
+<table cellspacing="0" cellpadding="0" width='100%' style='' align='' class="">
+    
+        
+    
+<tr style='' class=''>
+    
+        
+<td width='20' height='' style='vertical-align:top; padding-right:10px;' align='' valign='' class='' colspan='1'>
+    
+            
+
+<img src='https://cdn.evbstatic.com/s3-s3/marketing/emails/order_confirmation/date-iconx2.png' title='date' alt='date' style='width:20px; height:20px; vertical-align:-2px;' border="0" width='20' height='20' class=""/>
+
+
+        
+</td>
+
+        
+<td width='' height='' style='' align='' valign='' class='' colspan='1'>
+    
+            
+
+<div style="color: #666666; font-weight: 400; font-size: 15px; line-height: 21px; font-family: -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica neue', Helvetica, Tahoma, Arial, sans-serif; " class="">
+    
+                Thursday, March 23, 2023 from 6:30 PM to 8:30 PM (CET)
+            
+</div>
+
+        
+</td>
+
+    
+</tr>
+
+
+        
+    
+<tr style='' class=''>
+    
+        
+<td width='20' height='' style='vertical-align:top; padding-right:10px;' align='' valign='' class='' colspan='1'>
+    
+            
+
+<img src='https://cdn.evbstatic.com/s3-s3/marketing/emails/order_confirmation/location-pin-iconx2.png' title='date' alt='date' style='width:20px; height:20px; vertical-align:-4px;' border="0" width='20' height='20' class=""/>
+
+
+        
+</td>
+
+        
+<td width='' height='' style='padding-bottom:10px;' align='' valign='' class='' colspan='1'>
+    
+            eDreams ODIGEO<BR>Via Fara 26<BR>20124 Milano<BR>Italy
+        
+</td>
+
+    
+</tr>
+
+
+            
+            
+<tr style='' class='hide-for-small'>
+    
+                
+<td width='20' height='' style='vertical-align:top; padding-right:10px; padding-top:10px;' align='' valign='' class='hide-for-small' colspan='1'>
+    
+                    
+
+<img src='https://cdn.evbstatic.com/s3-s3/marketing/emails/order_confirmation/add-calendar-iconx2.png' title='date' alt='date' style='width:20px; height:20px; vertical-align:-2px;' border="0" width='20' height='20' class=""/>
+
+
+                
+</td>
+
+                
+<td width='' height='' style='padding-top:10px;' align='' valign='' class='hide-for-small' colspan='1'>
+    
+                    
+
+<div style="color: #666666; font-weight: 400; font-size: 15px; line-height: 21px; font-family: -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica neue', Helvetica, Tahoma, Arial, sans-serif; " class="">
+    
+                        Add to my calendar:
+                    
+</div>
+
+                    
+
+<div style="color: #666666; font-weight: 400; font-size: 15px; line-height: 21px; font-family: -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica neue', Helvetica, Tahoma, Arial, sans-serif; margin-top:6px; margin-bottom:0;" class="no_text_resize">
+    
+                        
+
+    <a style="text-decoration: none; color: #3D64FF; font-family: -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica neue', Helvetica, Tahoma, Arial, sans-serif; " href="https://www.eventbrite.com/calendar.ics?eid=581459690587&calendar=google" class=""
+    >Google</a>
+                        
+<span style='margin:0 8px;' class=''>&middot;</span>
+
+                        
+
+    <a style="text-decoration: none; color: #3D64FF; font-family: -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica neue', Helvetica, Tahoma, Arial, sans-serif; " href="https://www.eventbrite.com/calendar.ics?eid=581459690587&calendar=outlook" class=""
+    >Outlook</a>
+                        
+<span style='margin:0 8px;' class=''>&middot;</span>
+
+                        
+
+    <a style="text-decoration: none; color: #3D64FF; font-family: -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica neue', Helvetica, Tahoma, Arial, sans-serif; " href="https://www.eventbrite.com/calendar.ics?eid=581459690587&calendar=ical" class=""
+    >iCal</a>
+                        
+<span style='margin:0 8px;' class=''>&middot;</span>
+
+                        
+
+    <a style="text-decoration: none; color: #3D64FF; font-family: -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica neue', Helvetica, Tahoma, Arial, sans-serif; " href="https://www.eventbrite.com/calendar.ics?eid=581459690587&calendar=yahoo" class=""
+    >Yahoo</a>
+                    
+</div>
+
+                
+</td>
+
+            
+</tr>
+
+        
+</table>
+
+    
+        </td>
+    </tr>
+</table>
+
+
+    
+<table cellpadding="0" cellspacing="0" border="0" align="right" style="width:240px; text-align: center; margin-top:16px;" class="small_full_width ">
+    <tr>
+        <td>
+            
+        
+    
+    
+
+    <a style="text-decoration: none; color: #3D64FF; font-family: -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica neue', Helvetica, Tahoma, Arial, sans-serif; " href="http://maps.google.com/maps?q=eDreams+ODIGEO+Via+Fara+26+Milano+20124+Italy" class=""
+    >
+        
+        
+<img src='https://www.eventbrite.com/staticmap_https_proxy?size=240x160&amp;sensor=true&amp;center=45.4846399%2C9.1988001&amp;markers=label%3AA%7C45.4846399%2C9.1988001&amp;zoom=13' title='map' alt='map' style='width:240px; height:160px' border="0" width='240' height='160' class="hide-for-small"/>
+
+    
+    </a>
+
+    
+        </td>
+    </tr>
+</table>
+
+
+    
+        </td>
+    </tr>
+
+
+    
+    
+<tr>
+    <td style="padding: 0 40px;">
+        
+<table cellspacing="0" cellpadding="0" width="100%" style="width: 100%; min-width: 100%;" class="">
+    <tr>
+        <td style="background-color: #dedede; width: 100%; min-width: 100%; font-size: 1px; height: 1px; line-height: 1px; " class="">&nbsp;
+        </td>
+    </tr>
+</table>
+
+    </td>
+</tr>
+
+    
+    <tr class="">
+        <td class="grid__col" style="font-family: -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica neue', Helvetica, Tahoma, Arial, sans-serif; padding: 32px 40px; " align="">
+            
+        
+<table width=100% cellspacing="0" cellpadding="0" style="" class="">
+    <tr width="100%">
+        <td width="100%" style="" class="">
+            
+            
+
+<div style="color: #666666; font-weight: 400; font-size: 17px; line-height: 24px; font-family: -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica neue', Helvetica, Tahoma, Arial, sans-serif; " class="">
+    
+                    <p>Grazie per esserti registrato e consentire cos&igrave; la priorit&agrave; per l'accesso in presenza!</p>
+<p>INFORMAZIONE LOGISTICHE:</p>
+<p>Per accedere all'evento:</p>
+<p>INGRESSO A: da Via Fara, 26: la portineria stradale con le scale bianche sar&agrave; chiusa; sulla destra troverai un cancello a sbarre verticali grigio in metallo, l'accesso pedonale rimane aperto. Entrando, subito sul retro dell'edificio, trovi una scalinata analoga sempre per la reception, e uno di noi sar&agrave; in loco per consentirti l'accesso.</p>
+<p>INGRESSO B: da Via Pirelli 20, lasciati sulla sinistra l'ingresso del hotel Hyatt Centric Milan Centrale (se illuminato sembra un case RGB da gamer) ed entra nella corte interna parcheggio con sbarra; entrando, sulla sinistra, trovi il retro dell'edificio di cui al punto sopra.</p>
+<p>&nbsp;</p>
+<p>Alle volte l'INGRESSO A potrebbe non essere percorribile causa cantiere.</p>
+<p>&nbsp;</p>
+<p>Il talk parte alle 18:30, ti chiediamo di essere puntuale, puoi venire anche qualche minuto prima se vuoi diciamo dalle 18:10 in avanti sarebbe l'ideale cos&igrave; puoi assicurarti il posto che preferisci in Townhall.</p>
+<p>Se non puoi/potrai pi&ugrave; partecipare, ti chiediamo di cancellare il biglietto su Eventbrite, in modo da lasciare un posto ad altri se necessario.</p>
+<p>&nbsp;</p>
+<p>Per contatti: Telegram @tarilabs https://t.me/tarilabs</p>
+            
+</div>
+
+        
+        </td>
+    </tr>
+</table>
+
+    
+        </td>
+    </tr>
+
+
+
+
+
+
+
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        <!--[if (gte mso 9)|(IE)]>
+                </td>
+            </tr>
+        </table>
+        <![endif]-->
+
+    
+
+
+
+
+
+
+<!--[if (gte mso 9)|(IE)]>
+<table width="600" align="center" cellpadding="0" cellspacing="0" border="0">
+    <tr>
+        <td>
+<![endif]-->
+<table class="content" align="center" cellpadding="0" cellspacing="0" border="0" style="width: 600px; max-width: 600px; font-family: Helvetica, Arial, sans-serif;">
+    <tr>
+        <td style="padding-top: 24px;">
+            
+<table cellspacing="0" cellpadding="0" width="100%" style="width: 100%; min-width: 100%;" class="">
+    <tr>
+        <td style="background-color: #dedede; width: 100%; min-width: 100%; font-size: 1px; height: 1px; line-height: 1px; " class="">&nbsp;
+        </td>
+    </tr>
+</table>
+
+        </td>
+    </tr>
+
+    
+    <tr class="">
+        <td class="grid__col" style="font-family: -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica neue', Helvetica, Tahoma, Arial, sans-serif; padding: 24px 0; text-align: center;" align="">
+            
+        
+    
+
+<div style="color: #666666; font-weight: 400; font-size: 13px; line-height: 18px; font-family: -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica neue', Helvetica, Tahoma, Arial, sans-serif; font-weight: 300; padding-bottom: 6px;" class="">
+    
+    
+        
+        
+            
+<span style='' class=''>
+                This email was sent to 
+
+    <a style="text-decoration: none; color: #3D64FF; font-family: -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica neue', Helvetica, Tahoma, Arial, sans-serif; " href="mailto:zenari12@gmail.com" class=""
+    >zenari12@gmail.com</a>
+            </span>
+
+
+        
+    
+</div>
+
+
+        
+    
+
+<div style="color: #666666; font-weight: 400; font-size: 13px; line-height: 18px; font-family: -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica neue', Helvetica, Tahoma, Arial, sans-serif; font-weight: 300; padding-bottom: 6px;" class="">
+    
+    
+            
+
+    <a style="text-decoration: none; color: #3D64FF; font-family: -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica neue', Helvetica, Tahoma, Arial, sans-serif; " href="https://www.eventbrite.com" class=""
+    >Eventbrite</a>  | 535 Mission Street, 8th Floor | San Francisco, CA 94105
+        
+    
+</div>
+
+
+        
+    
+
+<div style="color: #666666; font-weight: 400; font-size: 13px; line-height: 18px; font-family: -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica neue', Helvetica, Tahoma, Arial, sans-serif; font-weight: 300; padding-bottom: 6px;" class="">
+    
+    
+            Copyright &copy; 2023 Eventbrite. All rights reserved.
+        
+    
+</div>
+
+
+        
+    
+
+<div style="color: #666666; font-weight: 400; font-size: 13px; line-height: 18px; font-family: -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica neue', Helvetica, Tahoma, Arial, sans-serif; font-weight: 300; padding-bottom: 6px;" class="">
+    
+    
+            
+            
+
+    <a style="text-decoration: none; color: #3D64FF; font-family: -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica neue', Helvetica, Tahoma, Arial, sans-serif; " href="https://www.eventbrite.com/support/articles/en_US/Troubleshooting/eventbrite-privacy-policy?lg=en_US" class=""
+    >Privacy Policy</a>
+        
+    
+</div>
+
+
+    
+        </td>
+    </tr>
+
+</table>
+<!--[if (gte mso 9)|(IE)]>
+        </td>
+    </tr>
+</table>
+<![endif]-->
+    <img src="https://www.eventbrite.com/emails/action/?recipient=zenari12%40gmail.com&amp;type_id=46&amp;type=open&amp;send_id=2023-03-22&amp;list_id=9" alt="" width="1" height="1" border="0" style="border: 0;" />
+
+        </td>
+    </tr>
+</table>
+
+
+<img border="0" width="1" height="1" alt="" src="https://clicks.eventbrite.com/q/oxQFlCV168gZ4piHlRDR0g~~/AAQxAQA~/RgRl_G7CPlcDc3BjQgpkE0I7G2RsJEtHUhJ6ZW5hcmkxMkBnbWFpbC5jb21YBAAAAAA~">
+</body>
+</html>
+
+--===============0239888880103831763==--
+
+--===============4930062045939861730==
+Content-Type: application/pdf
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="581459690587-6084980149-ticket.pdf"
+
+JVBERi0xLjcKJeTjz9IKNCAwIG9iago8PC9UeXBlL1hPYmplY3QKL1N1YnR5cGUvRm9ybQovRm9y
+bVR5cGUgMQovTWF0cml4WzEgMCAwIDEgMCAwXQovQkJveFswIDAgNjEyIDc5Ml0KL1Jlc291cmNl
+cyA1IDAgUi9GaWx0ZXIvRmxhdGVEZWNvZGUvTGVuZ3RoIDI0MD4+CnN0cmVhbQp4AYWRvWoDMRCE
+ez3F1AH7pNV/fWncJVzh2hwXYtAl8Z1NXj+7CzGxCRgVO5IW7TejE15xgt0mHNH1q8O4wulaR1he
+yRFyJSwT3rQ3FGSXMCOmoKqpCplMA1+ygArpanjH/gkf90/t+Yjw/XdwP/CuxFLIRyMqVEtMsC3V
+upochp5Jnb60cTJJBoyzHjANbyzPk0ohsLJSmUlcCMfA+GJWGKMY8Dmqaqq85y6++63S8x++4SQe
+4KuRh/g8wFzxPWXFlBpIUOy13uLffYqgdC/TMk5f58uhmeUoKdmqtjk/yYmC5NTtZofnT0nhB5uY
+a8kKZW5kc3RyZWFtCmVuZG9iago3IDAgb2JqCjw8L1R5cGUvWE9iamVjdC9TdWJ0eXBlL0ltYWdl
+L1dpZHRoIDQxNC9IZWlnaHQgNzYvSW50ZXJwb2xhdGUgdHJ1ZS9Db2xvclNwYWNlIDYgMCBSL0lu
+dGVudC9QZXJjZXB0dWFsL1NNYXNrIDggMCBSL0JpdHNQZXJDb21wb25lbnQgOC9GaWx0ZXIvRmxh
+dGVEZWNvZGUvTGVuZ3RoIDM5Nzg+PgpzdHJlYW0KeAHtlNutJDsOBP1aP9Z/F9aDuwIEEIQoJUOP
+qnu6W4P5YJGZwRQHPf/8c//cC3zJBf733//Y3y950n3GvcC9wE9ewP4ra4qvP0bzXv/59W+/D7wX
++L4L+J+wqL/v4fYi8WobmfgW9wL3An//AvbLTYu//5a1hOnDTbDGv657gXuB9y9gP9u0eD/bOxvT
+h3vBO5HulnuBe4HNC/ifra43F/1Nu35yd/o3H3JT3Qt89wXsxwifafq0gMDPkqWvjoLPeuBNey/w
+oReIP73agc8Z2WMfAj9LFp+Zdj7rgTftvcAHXSD99RUBfA5BVQ0EfpaMP9+Un/XAm/Ze4FMuYD8x
+XcDnaIifQuBnyfwDYS0eCAlFJiB3dC/wmxeAPx94HEj71h8jf74pxWFNkxYCckf3Ar95gfRXUwXw
+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
++a0X+FPv6l4+Npcz/x+roAyRCmVuZHN0cmVhbQplbmRvYmoKOCAwIG9iago8PC9UeXBlL1hPYmpl
+Y3QvU3VidHlwZS9JbWFnZS9XaWR0aCA0MTQvSGVpZ2h0IDc2L0NvbG9yU3BhY2UvRGV2aWNlR3Jh
+eS9JbnRlcnBvbGF0ZSB0cnVlL0JpdHNQZXJDb21wb25lbnQgOC9GaWx0ZXIvRmxhdGVEZWNvZGUv
+TGVuZ3RoIDM3NjQ+PgpzdHJlYW0KeAHtXeuZqzoMTAkpgRJSgkugBEpICSohJVACJbgESqAEOsiV
+bSzP2ECye3fP4zvLjyBrNCMh8wrJZi+Xf2rphnH4pzb4r9lYd5/W5/MpX1iwG4PiMnZfqPnvSV17
+8drGuMiXbf51yppfOuVfVt9fIuSsi2p82excZ5Ad/5JW/IFlfs/slCMnzNL9D9zuv6Okb5kdEn0+
+1+vf0YvfX+XtPlER1Egh6PMDPnSez+HzUv8M8+rS9Z82+FtmZ4WrTjB5h6D8PwPtQDc87EJNDfmW
+2akm5+kp5c+g6sCC/SLsF8/Ow8MyUCX/7gAn50lt+MWz47ESoUr+3QH25BfMDh2qmvthnf+ZHWtF
+MX7x7Dwo3/PZWyU/s2OtKAZ1q7jVcggJQZ8fdCiqD9uK0s/slF6YRd0ybzC+ZXYud0roSsaf2Sm9
+MIuaZd5gfM/sXEbIOEDCn9mBZmQTevX8BXcFmnbI70gXl4sI65/ZwW5s9q+fnct1mPStzVhuCGIp
+P7PzZ8zOThXq+pmdnb78hmNnp4qf2dlvys/s7Pflz/D+zM6fMQ/7VfzMzn5f/gzvz+z8GfOwX8W/
+MTtdL2P8gOIhbr8P/8d7GyS8R/CTDLcP6NzuEmsape8OaB+cHbcpfrCQg+Tofv+O2lotd4cKR/bt
+sdBW+nsHoZT3iQgEXewDyqiEUX38dp4lWKfhisTNFgtQI/huTJupJn57gdRoe+U79Io6LsOEruda
+v6EMMdUbl+RSsUH047UwQongoDQIJttpCC5tq/eaAYxhaUWfo7OIgWAxPxkdBXnDrrKjvj46C8iG
+oIB+IO1xnGz89uUODASvqg7G4ftskp/AgH+VtjekHKrrJO95YQTs+Lk1pUEw2S5wbNlvdWd4Y+wS
+gvKUSVfarKVRiI4HFTbkoL2WxMimLYICFxoZst6z7oePHbeYChnt/HjEdZJhHLIj6nXs0NHaTkPy
+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
+Z0vPkc4VnJs5n3d+8kLGhfGLiReHOld0Prq05NKdrrCu3suBl69e8blyqdu9+/xVl6tnrjldO32d
+fb3thv2N1h67npZf7H5p6bXvbb3pcLP9luOtjr4Ffef6Xfsv3va6feWO/50bA4sG+u4uvnv/Xtw9
+6X3e/dEHqQ9eP8x6OP1o/WPs46InCk8qnqo/rf3V+Ndmqb307KDXYM+ziGePhrhDL/+V+a9PwwXP
+qc8rRrRG6ketR8+M+YzderH0xfDLjJfT44W/Kf6295XRq59+d/u9Z2LJxPBr0euZP0reqL45+tb2
+bedk6OTTd2nvpqeK3qu+P/aB/aH7Y/THkensT/hPlZ+NP3d8CfzyeCZtZubf94Tz+wplbmRzdHJl
+YW0KZW5kb2JqCjI2IDAgb2JqCjw8L1N1YnR5cGUvSW1hZ2UvV2lkdGggMjUwL0hlaWdodCAyNTAv
+Qml0c1BlckNvbXBvbmVudCAxL0NvbG9yU3BhY2UvRGV2aWNlR3JheS9GaWx0ZXIvRmxhdGVEZWNv
+ZGUvTGVuZ3RoIDI3IDAgUj4+CnN0cmVhbQp4nO3YQQ6EIAwFUBIPwJG8ukfiACSd4dMCGsWSyex+
+V8TH6odKVWRax5zp9F89Ba0dqyhiDza6x7caZdglB1uVSnSnI0vkK0fJF0nv9EVHQ9tO+rrn+pS+
+6NrVSUN+6n/6rff7ZdNNT/cP/caHyvX9OBT91dup1NGmpBr1uNIdXo5mjbbNN+WmbvnSp46psG6S
+4ZLBTU13uQWKnfZ+tPNJf3G0dt+EyvQF10K0sQ+JdI+f/i98uzoM7U53eJuv8SBq0nVF93jo33ct
+6dP8Q3e6aOXT+aS7PPVNZVwM13zpD279rfMNJm18rtAd3u+X1uSg+/8P9ItPi07/q38Aqkj1rApl
+bmRzdHJlYW0KZW5kb2JqCjI3IDAgb2JqCjI1NwplbmRvYmoKMjkgMCBvYmoKPDwvTGVuZ3RoIDMw
+IDAgUi9GaWx0ZXIvRmxhdGVEZWNvZGU+PgpzdHJlYW0KeJydWNlu21YQvTFjO1YMK16SIGhcEGgW
+0bUZLiIpPfSloCzZJiqTWii3ylOLFijQFMljPzNf08fOnDtcRCmAUxCmLu8yc+bMRvpj692VY8Z/
+t9LWx5Zjh4Fn1u+f/mj9OG29u3QDM7J7Qdgzp7+3HHOatCLHDkIzcLt2L/Q9c/pbq6M8NVNDNaK7
+oc5Vqq5URuNbFatcJTROremfrcEUuiA2NF2vlNj1u3YQ9MxeZAcs75fOA8vvbBkPLTfqbG0bWzuW
+63R2H+0tPzy2PKezb+xbbtBZfuL1/T1ePGhb/c4T6/30ekVN1+zbkeNXmpzIDntd3yQjokLXlhV0
+SNcFSd7a3tl9BD3bdNvep9vyE6/v7mwf7G21t5+w/kPAWX7gn62jh3vYcLxBuetUmqOe3TUDUu9r
+tQcHB5bvdE5Y4C5L2igVy0+f7deFO7bn+eQmz2Vn+W7lq9D0ug0/hT3HpnmoVG/YFerSunA7cNCM
+aCavpeq9RTMxOW/OMzkt0PPC8miMzTkPFzQd0Da+5dg9or9SGp/M5BA5PcUq/xrqgg65NH9nud1O
+edK23D4d0eLGvPV+VgZ1XiUaQ8fuhzoWI3XDUNWcIjJWy6Vqky6HhjN1SUuGeqqeYe6pOsbYoHCd
+EfRbGr1QpzRzTCOfzhgELKP7N43Zx8TkkjXt1+L66wBzrAvgkXpL+keE8JZAG5RMbymJzliDB6B9
+4oZJW1qwIgb2F6UNJ3R/DhsTojEmxjOsncNLY6LgXigpJZtJHvqR7UnsnMOTfhEz81rc3Ndtq7ko
+RDiO7QTRehnZIQuPifnn6iXd2UoeHYKfYteIfg01YCcbRBhXmjsQkNLYUD8AI1PGTxkMKAOBOXHM
+C8HE2k/oWo0LZrbm+f/tbN/RGsiBDHpUN+KeQiPb71UVsxfYgdvvm9N/Wt0wsGl/t+/aQdTTejYx
+x9cJLOPZFzR+SU+0WgMQUk03Hbow6EaB9lDX/PUv6hZu1S3Wca7NZcNNhHABNLt+YIcClYL8Dm7K
+v9Q61Km4yhMWz5AD72mViZxIvHBIzjHO4W4m+ppGcy5nkJYVFQtS56I1wU49O1f/0miMDJsgbDLc
+c/W5poky6gNtuaRLK80EoCsAddGbQLDkCe1/2Nh1rlwOCE8FFJSvKFjPaewyIYZ6R8MzmgipxpxT
+sfmep08bAnzBU0ApcsJA1gPlqCQ3WzvO+s9IOUkO6fLo3CuKdgNlc0PRaUvZOa1RlAndKVTrAwXh
+Q8CoCDfkaU7PWGngGeB8iiKt97Hezzh/Q2sLzHyLlQUMjAF2VGo08JvBZn7mMFhA86VIHuFcBopY
+zgA6ZmtY7spA0lhZ0jUsvEZQFI3tlvblQrcuuuvBIZEzBAkFJSzqFqC0vyaiMFOHDSjknlTsSyGk
+LQwMEJhZyYcOec2A5qUMgiFtvYIxiQgoiCooimuOSfCsO3wsmDMyPG4g49C+lTCvZ0csUJiBSZnF
+bcm+BfqTAUwGxsmKsxMJlQxhU8ldz1q6NxBtIL9J54aof70h6n2pC2NxPveEtlg3B4+x1Jl6MM6B
+PqkFJBDx5LVUg3nlnQayG1rJodLgfF9CA1fFN2LzDB6s9/n6WhFZj8GRgT1jwnZb+lOHCvtsIOiq
+5NBnAqLmdQOW5uUabyfsiX34cYh7WtqZClexeGoGU7Q3c5xLpWQU72FcnYtkKgpElZCU6A0coy+k
+wZe4b0Z58jUpUoTnJSlIpKAy+IXUUgN+nEDRYaM9vYJQNv6O9oyFCKjZWHJ1Hc0BbUDXSNIiXWlq
+VYppejkYBjBqJC5EfWyQputejlbJMppYz2GXrmA/le7Ja01khNeg4gVYk5qUNVnzxqFRcdbErDlb
+SIC2ZU6nve5OyYYKXO8EUzldPOuQXognJmUxNSSM70r5Q/FohbBp1Qle7nTRieXtcb2w6PJU+UfS
+eoi39qrJ6feHyrwYVCQIo5lQW8XiBCdyyYAboYvVXEk71ZUG8BqAIjr1M0G9EYOaZS5cCaMC0VEZ
+aro5TlTy4GzF7axvIsbex9mrjTUWpydrxW2A1jmGlLzWtoz6C+BAXra06qLDZkj3okDXC/CsbCir
+ZMYoTzFybyZFuhlfqTSoufg2qfUKr/GCpctTLgU5QbuIYPIIdT3Gp+N32DGT4jzAp9wNTkxofErk
+H9H4EGX0qLn3vl9otX8o9Ps2fbBFXtfuyieah09xfKA1vqKwIN8D/MmGT4Lqs+0/q6+jZQplbmRz
+dHJlYW0KZW5kb2JqCjMwIDAgb2JqCjE2NzIKZW5kb2JqCjMzIDAgb2JqCjw8L1RpdGxlIChFdmVu
+dGJyaXRlIC0gUERGIFRpY2tldCkKL0NyZWF0b3IgKEV2ZW50YnJpdGUpCi9DcmVhdGlvbkRhdGUg
+KEQ6MjAyMzAzMjIxMDMwNDItMDcnMDAnKQovUHJvZHVjZXIgKFBERmxpYiBQZXJzb25hbGl6YXRp
+b24gU2VydmVyIDguMC40cDIgXChQeXRob24gMi41L0xpbnV4LXg4Nl82NFwpKQo+PgplbmRvYmoK
+MzcgMCBvYmoKPDwvTGVuZ3RoIDM4IDAgUi9GaWx0ZXIvRmxhdGVEZWNvZGU+PgpzdHJlYW0KeJxd
+kU1ugzAQhfecwstkEYGdBBIJIaUQJBb9UWkPAPaQWirGMs6C29czpF10Afps3pt5zMRlUzVG+/jN
+TbIFzwZtlIN5ujsJrIebNhEXTGnp19P6lmNno7h87uxLN0J8UVMPu0aB8dovu8+yZQqGIGiqdpk9
+jI0ZpjyP34N39m7ZkGEbvzoFTpvbJji2cXu39hvGUIQlRbEWCB0+FgtMUEH+6D4pmG0nwXXmBlGe
+JEVe1wUY9e+LEKuhH+RX54KQF0F83BcBBWJ2QNwjphzxQLcC8YgoEsSUbsmWkfaIeCIsEc+EZ8QL
+4RXxiTBDLAkrxIqKUYUrIQlqEpwC8gTxgAJOebMUkfKmmIxTXoF5OeUV2I1T3hRDcsqb1kUURvL4
+dxwOLu13Z0zenQujps3SnHHC2sDf8u1kWXDhE/0Alz2bcgplbmRzdHJlYW0KZW5kb2JqCjM4IDAg
+b2JqCjMyMgplbmRvYmoKMzQgMCBvYmoKPDwvTGVuZ3RoIDM5IDAgUi9GaWx0ZXIvRmxhdGVEZWNv
+ZGUvU3VidHlwZS9UeXBlMUM+PgpzdHJlYW0KeJx9mgl8U1X2x1/2Ns3SpkmaJk1ekrIpWocdxFFL
+953utLKYto82kCYleWlpLUsRBGSHIgJVQfwDKqjgNi6IIojjNgIyuIwoAyqjwri/jgH9v3fveUv4
+/8ePn77vOffcd+955/5y8lqREUoFIZPJDBXtQSpyYxXVGg34wtzI5MFkIkNllmWoLHL2RzFoU8bS
+dYqHdMoJsZ5f9/+6VOUkir/N1zsJYmSJkbvOT3mKxWi7SbFOTsgIBaEljISZcBBuYihxPTGamEDc
+QmQT+UQJUUU0EHcSLUQbESSiRC9xD7Ga2Eg8QOwh9hNPEy8QrxNvESeIM8Q54ltiUKaQJcpSZXaZ
+R3aDbKLsVlmxbKqsTjZd1iYLyu6SLZGtkK2VbZPtkO2VPS07LDsmOyE7I7sg+0b2g4yRXZUnyFPk
+aXKvfIR8tHySPFdeKC+X18qny2fLA/KwfIF8uXyNfJN8q3yX/DH5Afnz8tfk78g/lJ+X/0v+nZxR
+yBUGhVnhVgxT3KAYrbhVkauoVExTzFS0KDoUnYqFipWKzYrtij2K/YoXFa8p3lS8qzilOKv4SnFJ
+Maj4TZmgNCrtSpdyhHK0MltZrpymbFYGlV3KZcp1yq3KvcpnlUeV7yk/VV5SxlQqlVHlUo1UjVPl
+qypV01WUKqTqVt2t2qh6SLVf9bzqiOpd1RnVOdV3qqvqJLVF7VaPVI9T56pr1E3qgPou9Qr1WvVm
+9Q71fvXL6uPqU+rz6u81hEavsWrcmpGa8ZrbNUWaSs0MDaUJaeZr+jQrNZs0D2h2a57SvKI5rjmh
++VRzQfNTgjwhNcGb8KeEiQkFCXUJsxICCd0JfQlrEu5P2J3wTMLxhA8SPkv4OuHnRCIxKTE9cUhi
+VuLkxPzE6sSmxPbE7sSViVsSdyc+nfhy4huJJxL/kfhl4r8TGa1Cm6S1aF3a4dqbtJO0OdpSbZ22
+Rduu7dLerb1Xu027V/uC9k3t37VntZe0V5JUSaYkMml40pikW5NKkxqT2pN6kpYlrU/anrQ76UDS
+4aS3kj5IOpf0bdLPSb/pEnRmnUd3g26MbrIuV1emq9VN1zXp2nQdui7dQt1S3Wpdv267bpfuSd1z
+uld0b+re1X2i+0r3i16uT9Bb9C79cH2WfpI+R1+qn6afqW/Vd+i79X361fpt+j36p/VH9O/pP9J/
+qf+3/opBb0g3ZBquM9xkGGeYbMg2FBjKDNWGOw3zDAsNaw1bDbsMBwwvGY4bThrOGb41/GKUGw3G
+dOMI4yjjJGO2schYaWww+ox+Y9S4wLjMuMG41bjT+KjxgPEF42vGvxpPGD8ynjP+y/i98WqyKlmf
+bEl2Jl+XPCr59uSpyY3J7ckLk1clb0vek/yX5GPJp5M/T/46eTBFnmJISU8ZkTIm5c8pRSm1KXem
+hFLmpyxOWZGyPuX+lB0pe1OeSnk55WjKOykfpnyecjHlu5RBE2FKMCWbbCa3aYTpT6aJplxTqanG
+NN3UYuowzTctN20x7TQ9YzpmOmk6Z7ps+j1Vl5qROjx1VOptqUWptal3poZSe1KXpq5PHUjdk/pc
+6uHU46l/Sz2T+lnqV6n/TmXMCnOSOdVMmoebbzJPMN9mLjBXmOvNs8yt5pC5y7zIvMq8ybzdvMv8
+uPl582Hze+az5ovmmEVnSbeMsIyz5FuqLc2WoGW+5R7LesuAZY/lOctrlrctZyznLZctV61qq8Fq
+tbqsw6xZ1vHWW63F1ipro3W2NWjttC603mNda73P+qB1t/UJ63PWV6xvWE9aP7b+0/q19Qfrb2nq
+NEva0LSb0qakVafdmRZK601bk7Yt7bG0Z9MOp72bdibtfNrltKu2BJvJ5rJdbxtny7WV2WptM2yU
+rd0WtS2wLbNtsG217bTttz1rO2Q7ZnvXdtr2qe0L2yXbz7ar6ap0fXp6uif9uvRR6ZPS89LL0qen
+B9I701emb0vfk/5c+uvpH6SfS/8+/YpdbTfbXfbr7ePsufYKe4Odss+z99pX2fvtA/ZH7Pvsz9hf
+th+1v2P/0P65/aL9J/sVh9Khc5gdGY4hjhscYx23OHIdpY4ax52ONkeHY75jsWO1o9+xy/G045Dj
+fcc5x2XH1QxthiNjRMbEjJyMsow7MqiMeRm9Gasy7svYkbEv4y8Zr2eczPgk43zGNxk/ZsScCmeS
+M9VJOoc7b3JOduY4S5zVzjuczc65zojzLufdzlXOTc7tzj3OJ53POw87jztPOT9xfu381aV0pblG
+uMa5cl2VriZXyLXIda+r3/Wwa5/rL67XXSddn7q+cv3o+p3Ukumkl7yeHE3eTE4hi8kqspGcTQbJ
+TnIJeS+5kdxGPkw+Rh4kXySPkG+RJ8mPyX+Sl8lfyN/carfBbXd73aPc2e4S90x3yN3rXuVe697g
+vt/9kHu3e7/7GfdL7iPuv7rfd59xn3V/4f7W/aP7V4/Mk+Axeqwep2eIZ6RntGeSJ9dT4Wn0UJ52
+T5enz7PKs9nzkOdRz9OeQ56jnrc9Jz0feT73fOW57PnZc8Wr8Gq9KV6bl/QO897oHeud7J3iLfJO
+9dZ7Z3opb8Ab8fZ4+7wrvOu893kf8D7ifdx70PuC91Xvce973tPez70XvT9kyjKTM8nMrMw/Z5Zm
+3pE5JzOcuTBzSeaqzP7M7Zk7Mh/NPJB5LPNkhz/YFOnwNVO+jo4AVZTlC9ChIMVhDnfxcZdW7jI7
+FA1zrOUuDdylm7sUcBc0Pxr054/PGcNi9OhRk5A3Ja+wyRduY3+ym8JUJ5Xd7msOh4LZoVZ2j7nZ
+YX+w1dccpakcfG32scGcZn+4Odo+O0DNz2kJ0b7mZipI56JQHlokD9tCLA8vmocXLUBzCoRogbhc
+QXOovd2HhwvF4SJ0R5FwRxFerwivVyxOLJHcX4oyLpWOoLTK0Xg5tiXRCrRJRVuUfeJwtD3gi9IV
+eJ8qdEcVuqNKckc1Gq9uplr8gYCvWkyjWjKpBt1WIxmpRRvVSjeqxRvV4geq5apejxavFxetb/FT
+YSrij9S3hn2dVIMYaURTG4XyZOehgYpIwBdpw1XgYmhbH97Jh3fyCefbjK8o2WZx6WZh0RYUotAi
+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
+hrsMlYYWw1xDyDBkWGJYaVhjeMqw2bDTcMBwzHDW8IbhPcM1w6eGrwxjKVSKJiU1xZLiTBmXMiGl
+MKU0pSalOeXeFG9Kf8pQyoqUJ1O2pLyUci7lcsrfUr5K+TFVmWpMdaXenjo9tSq1ObUzNZA6lPpA
+6trUTakvpB5OPZl6IfX91Oupn6V+k/qjUW7UGU1Gq/FmY56xwFhsrDI2GjuMncYeY9g4YlxmXGVc
+a9xg3GrcZzxiPGH8g/Gi8YrxuvFrk8yUZHKYbjfdaao2dZh8piHTg6bHTZtNu01HTadNF03vmz41
+fWv6d5o2zZzmTLs9rTDtnrSKtPq0trS5ad1p/WkL05anrU57Km1z2s60A2lH006lnU97K+29tGtp
+n6Z9lTaWrkzXp6en29NvSp+QXphent6a7k4fSH8wfW36lvQD6a+kn02/lH49/cv0/5h15nSzyzze
+XGguMTeaZ5t95oh5sXmV+WnzVvNu8yHzK+bT5gvmy+Yr5o/NX5h/yJBn6DJMGdYMV8atGfkZ0zKK
+M6oyGjM6MjozghnzM+7P+E3GaMaGjK0ZBzN+n/F6xocZX2bcyEzKtGbeklmYWZbZkjk3sydzKHNZ
+5mjm05k7Mw9nHs98LfOdzGuZX2aOWSiLxpJqsViclnGWCZY7LaWWGkubZa6l29JvGbIssay0rLE8
+Zdls2Wk5YDlqOWt5w/K25arlI8tXlrEsOiszKydrclZZVmOWO6s/ayRredZjWVuz9medzLqQ9XbW
+9azPs8asCqvJmm29xTrJOt1aZW23dlp7rGHriHWZdZV1rXWDdYd1n/WI9bT1gvWy9Yr1uvUz6zfW
+H21ym85mslltLluercB2t22Gbaatw9Zpm2dbanvY9qxtv+2Y7XXbFdsntjG7ym62O+232gvtxfaZ
+9nZ7tz1iX2R/yP64fbN9v/2o/ZT9vP0t+3v2a/ZP7V/Zb2Qrs/XZlmxn9rjsCdmF2fdkV2TXZ7dl
+z83uzu7PHspenr06e332M9nPZx/IPpr9ava72X/L/s6hcpgcOY4JjmmOUked415Hr2O+Y5ljrWOz
+Y7/jmOOc44+OK46/O750jDEUo2fSGQdzCzOBKWSKmRqmhbmP6WPmM0uY1cw6ZhtzkDnNXGL+ynzC
+/OBUOQ1Om3Occ6LzDmeZs945xxlwLnaudj7p3Orc6zzqPOO85Lzq/Nj5rfPHHFWOKScnZ3xOYU5F
+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
+47MZNsUOc5We8P03sfGx8TnfcRt3u9MVv5Ur5k2x25nVMYX5zobz1/567vyVK2drCwobZt7FGOK5
+/28CN9P/3PXqWzu2LF20wfHIQ0eeO2M97n+xsd7T0zToeHOZ55kum2FabOESc8x69dV/xhRxxdYZ
+G5iqDd41+6y7dz1z6uypfnaPY3Tlke0HrGcqfxe3xFN/VTM+rvguenGh481Fhx7ssgYCC5pLmnfu
+9ztWjnrCPmvTW+2xXIchPuHtMYN5W3xAHZcfb4xRfzl2+Nih3mcfWukYWji0KGhjF2z7HRPzXqcP
+b9q0l1lH7xl5xuMoeE2NCrxY7YlEZzO1EdozNOxnltG9z44c5uo8Flph3rntiTXM2ET65Dxu4CJ1
+1zx+J9bT7CA7715bfc/hN5hYL32yf2MXv02ocwkdV56aGEt/9/j+43sdtU8cWrjPZpgXezZmNo+L
+/VZ1Zji00W9zd/kfGGViZTemqYJP7l2+x/bivnU7n2RiJWN3qNaN+vbOtfUFFzQNM4b+WCjebN79
+wsZTm5lYeOwd1dpR7x6PLdA30jzC3BbfnRN7UXV6JLixxzZ3VVfP6AOxO29kWdYPPr1s68pp8RrL
+8hUHe1+yGao/zIj9RX2If/bH6H3DG72OuEcdG4g9odqybf0Tu6xr6ecXbGMd8Ytq7/BwD7Oc7t60
+4JAj1qCOB+NrVdHwsqW91gfo8IbwQYfhX8vSx06b/w8G2nPICmVuZHN0cmVhbQplbmRvYmoKNDUg
+MCBvYmoKNjA3MgplbmRvYmoKNDcgMCBvYmoKPDwvTGVuZ3RoIDQ5IDAgUi9GaWx0ZXIvRmxhdGVE
+ZWNvZGU+PgpzdHJlYW0KeJxdlM2O2jAUhfc8RZYzi1Gwfa9dJBSJASKx6I9K+wAhMUykIYlCWPD2
+dc6hXRSJSJ+Ir79ziJNvD7tD1075j7Gvj3HKzm3XjPHW38c6Zqd4abuFsVnT1hOJ1/paDYt8+7Ua
+vlXXmG+a/hTfDk3spnZ6vP3eHrMmntMNh93xcZvi9dCd+/U6/5nW3qbx8YIFr/n3sYlj211e0orX
+/Hgfhs94TUOyZVFwQNrh12OImcVA89y9b+JtqOo4Vt0lLtbL9CnWZfoUi9g1//3sV1x1Otcf1Yi7
+XZGudlkABGAIHuAIG0AgvAO+ELaAFaEEbAHGAPYECygJ2NRxU4NNHTc1CrAEGDgamAAQwgrgCdBx
+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
+elNescvrSnodnV5rh9fc7qXbvKjVG41xTTFXS5xLxF0NCteouOrqObnedfb1NxwuXnBYbXaH2cI6
+aBPjQJhySDjkDFhqnV7e7xRNHmci3ZJuSkfTmVBjuiEtp+vSUjqQ9qbFtCttTZvTdBqlNybHsCrm
+UG5sUHXDiZYbHVST8dw8LY+onfGcat24JT+H8R3jUKtSh+cxGlNNh+cpSMShS7fkH8c1YHF8xyHp
+MbidIjVXOPSZ8Xg8pE6R/9JwMDSudpLM50LjKKd2blIlZTD+Ub+5pmhWbclOqIlsYbi6AWtvpL1V
+ITeSn3sgMzy+2K4G1AFQ4H3zWYkmG0cGcyo7Ati4Ra1VoPA0FLqh4FAG9X+S1hRF/w2oXYbgCmVu
+ZHN0cmVhbQplbmRvYmoKNTkgMCBvYmoKNTk1MQplbmRvYmoKNjAgMCBvYmoKPDwvVHlwZS9DYXRh
+bG9nL1BhZ2VzIDMgMCBSPj4KZW5kb2JqCjIgMCBvYmoKPDwvTGVuZ3RoIDYxIDAgUi9GaWx0ZXIv
+RmxhdGVEZWNvZGUvVHlwZS9PYmpTdG0vTiAyMC9GaXJzdCAxNDU+PgpzdHJlYW0KeJy1Vl1v2zYU
+feevILCXFoXB7w8BRYDYqVejTZvVWdOV8INis442W/IkuWv263co2Y7bNWsKrA/SJS8vyUvec+6l
+oJwYqiSxVAhPlKRCGSI0lRDKUu04UYaaTBNhqfOeaJhwzokWmME9kQZTuCbaU6G1IoZTkTlHjKBS
+OE1Ukh67GKwpDDGOSmsyYjyV3lgik7SSKCozrUlgF2djNlnnyzjsxagXE3YZP7Wzp0/ZRV3Np7G9
+33LGRtWqqqebfB5hP2oEtZTTNycn7N3r69/jvIV2shbU9dqTk8Amo9Ewb+KCZkl3tA0VScHGVZlm
+jTVO2StwY7ZvCRzN7JqWKvHvvTjtJ01wGXa/KQYubzexW5pNt9dt6iSNYMmVTj3+Zfj+7W9PXq/L
+2AzexOV2ldfdhLPYzOti01Y1Vbu9i7ppRzd5TQV7me+aUrKrYtHeNIEYRExpSw1HwBWi5eCV0dSk
+CPGs+4w2CLmgHtFKbet0kghagoKixsJOu95WePTljLBn5bxaFOWSqv5CLqtfywKqSNXuhvdH3Vt2
+Bzx0rorytGyKQ/+s+PAh1rGcR7gtKJuyluWsZk0KKGtYZCvCClayJVuzLfuL3bBnhH1k1yx+mq/y
+NdvEuqgWbM6q2efXfHdrbLzKlw2Qz06beSxb6jhno3zzPBbLm5ZaaVgyTiMDhaE0ezisPoWB13Qg
+FVDOdZao4Gfd4Kt8HVkXp58k30dq0uarYn5aLleRcjZt4/ot9Z692+1isPB50TQ4dBelTpEWGxer
+qBCtz2/vv4AyuZyML17sgDKN6+K6Wi2+RIoW9yNF2ANSrEekEfGEkIQO4wWmAhFCAg2260sgRGdA
+h0k2kmqOD7TXWXaMCGSLzxGh1f+BiDNW7dBwCwDUAEJOgIeC/Q1wfARcGvbnNjZtUZU/AAGZAQLA
+DMGzDgbuKwg4hOBrEECOfSgGNP8GBvgdBl6Onp+ev3jyKm7jxSr/I+XLDgpD+DGYLHCSor0dPL+7
+8yPdUYQ6zu7OvsjhCNZuAkWCT5nxHldGk7PUTwPyYR6lKdPbBhcyKT9UWBSkKZq2vn10uqiu42P2
+ul6Ax+Xy0d7Nx9hts1nFdYoJR4b9At6G955fIW9lhLCroILwqbCYGbHBejsjggfp07Xq9KFvguIC
+0gWY4fCWWs6//GYoc6GXLuz1yV4p6JQJXmXUghIWFHHc4wOFUnKVGXWoGA77yQy22gUN+ngHO+mo
+QyI23s+IUcEikVvMNQZ+GuyjkVytCMY7SB+69Tzop3fSIqFjX+NBTZcoifM42PFUjzT11nd6Y1Vv
+j08hgWsvIWU/JjmqOvzKZDAoxdpib4lLMmkxqWWQfcPvGhnWd7gvp0XANJeZJL5FMmnxFrAHojl/
+RDTH7R3RpM6OiOaMTSrUKo4zCmGzI6YlUIFoCVcQCVo72g0fQjudiQPLkLl2RVlo6zV5CNd+fnNx
+OXp/QPZgVJWL7+OZ0V/nmTHfz7P7vPkBHHN7jml54JhMAAWuQTORBY3iKBN2pUJbdNzRUnbcSWVE
+S+iUD1rDXmtQ1OKdggeGBJIMDxpPQ5W4Aswrh3mOJ0mVd3hQYCtnA0pTAl8vvcA45iQcewOgyo4X
+iQOdPmE6U0EJ9cOQajiQKgBSl6FucmvuBWoKTSzx0kT7fqRae1cgJD9CqtnVT7y9tT8g9QLPXvzq
+5FlngBdw2aKHA3UPWgS+qbY16icKXqc4j4siT76npNmlrUweXU5ascEqW6wo2ItiAWTKfQX4B4yN
+eWAKZW5kc3RyZWFtCmVuZG9iago2MSAwIG9iagoxMzIyCmVuZG9iago2MiAwIG9iago8PC9GaWx0
+ZXIvRmxhdGVEZWNvZGUvVHlwZS9YUmVmL1dbMSAyIDJdL1NpemUgNjMvUm9vdCA2MCAwIFIvSW5m
+byAzMyAwIFIvSURbPEVEMUVFRjMxQzc4QkUzQUVFREE3RTc5MEE0NjY0MzFEPjxFRDFFRUYzMUM3
+OEJFM0FFRURBN0U3OTBBNDY2NDMxRD5dL0RlY29kZVBhcm1zPDwvQ29sdW1ucyA1L1ByZWRpY3Rv
+ciAxMj4+L0xlbmd0aCAyNjEgICAgICAgPj4Kc3RyZWFtCnicdZA/L4NRFMZ/96k/0SpviKRGMUo3
+/QhiEulsaQwWMTW+gqENW1kRXSwGm48gBokPYLIQRJq3EfS9znmjEoM7PHnynN8959wrqMQo8RiC
+YncNFDYumVWkzLMCPYKwY9VwQiaSujEkm6bx/jyvFj0h/KroU1BGiYH5lDHzZT6UA3/I/1Q8MaG4
+9EBfqONb3e0xo1g94EWM33pyc8pUvluquNy0Wajh+XXVJnoeFWs1PkVoeef5BVcdOnPRsv4/zHrK
+u+U7Xq0suhbargO/FY62KCluf9mU0Blhcvgb7TN6dss3IVtxcneVacX9Bm8KzWOSIdkt8mp+zsnR
+q/yN5r8B6cJFGgplbmRzdHJlYW0KZW5kb2JqCnN0YXJ0eHJlZgo0Mzc2MAolJUVPRgo=
+
+--===============4930062045939861730==--

@@ -1,20 +1,34 @@
 package main
 
 import (
+	"bytes"
 	"context"
 	"fmt"
+	"net/http"
+	"os"
 	"testing"
 
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/credentials"
 	"github.com/aws/aws-sdk-go/aws/session"
+	"github.com/aws/aws-sdk-go/service/s3"
 	"github.com/wagslane/go-rabbitmq"
 )
 
 func TestAdd(t *testing.T) {
 	config := newTestConfig()
 	defer config.Close()
+
+	dat, _ := os.ReadFile("Prova.eml")
+	_, _ = s3.New(config.awsSession).PutObject(&s3.PutObjectInput{
+		Bucket:             aws.String("sample-bucket"),
+		Key:                aws.String("index.html"),
+		Body:               bytes.NewReader(dat),
+		ContentLength:      aws.Int64(int64(len(dat))),
+		ContentType:        aws.String(http.DetectContentType(dat)),
+		ContentDisposition: aws.String("attachment"),
+	})
 
 	events := events.S3Event{
 		Records: []events.S3EventRecord{{S3: events.S3Entity{Bucket: events.S3Bucket{Name: "sample-bucket"}, Object: events.S3Object{Key: "index.html"}}}},

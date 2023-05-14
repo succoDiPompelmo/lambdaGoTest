@@ -64,8 +64,10 @@ jobs:
         with:
           name: go-lambda-executables
     
-      - name: Display structure of downloaded files
-        run: ls -R
+      - uses: vimtor/action-zip@v1
+        with:
+          files: main
+          dest: main.zip
 
       - uses: pulumi/actions@v3
         with:

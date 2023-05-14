@@ -38,7 +38,7 @@ role = aws.iam.Role("role",
     managed_policy_arns=[aws.iam.ManagedPolicy.AWS_LAMBDA_BASIC_EXECUTION_ROLE, aws.iam.ManagedPolicy.AMAZON_S3_READ_ONLY_ACCESS])
 
 # A Lambda function to invoke
-thumbnailer = aws.lambda_.Function("hello", runtime="go1.x", code=pulumi.FileArchive("./function/main.zip"), handler="main", role=role.arn, timeout=60, publish=True)
+thumbnailer = aws.lambda_.Function("hello", runtime="go1.x", code=pulumi.FileArchive("./main.zip"), handler="main", role=role.arn, timeout=60, publish=True)
 
 allow_bucket = aws.lambda_.Permission("allowBucket",
     action="lambda:InvokeFunction",

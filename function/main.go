@@ -61,7 +61,6 @@ func newConfig() *Config {
 	if err != nil {
 		exitErrorf("No connection to RabbitMQ host, %v", err)
 	}
-	defer conn.Close()
 
 	publisher, err := rabbitmq.NewPublisher(
 		conn,
@@ -73,7 +72,6 @@ func newConfig() *Config {
 	if err != nil {
 		exitErrorf("New publisher failure creation: %v", err)
 	}
-	defer publisher.Close()
 
 	return &Config{awsSession: sess, rabbitmqConn: conn, documentsEmailRecievedPublisher: publisher}
 }

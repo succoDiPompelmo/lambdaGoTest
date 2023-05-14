@@ -3,6 +3,45 @@ on:
   - workflow_dispatch
 
 jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./function
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.19'
+
+      - name: Build
+        run: GOOS=linux GOARCH=amd64 go build -o main main.go
+
+      - name: Test
+        run: go test -v ./...
+
+      - run: ls
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: go-lambda-executables
+          path: ./function/main
+    services:
+      localstack:
+        image: localstack/localstack:latest
+        ports:
+          - 4566:4566
+          - 4571:4571
+      rabbitmq:
+        image: rabbitmq
+        env:
+          RABBITMQ_DEFAULT_USER: guest
+          RABBITMQ_DEFAULT_PASS: guest
+        ports:
+          - 5672:5672
+  
   update:
     name: Update
     runs-on: ubuntu-latest

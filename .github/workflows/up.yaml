@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./function
+        working-directory: ./function_go
     steps:
       - uses: actions/checkout@v3
 
@@ -27,7 +27,7 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: go-lambda-executables
-          path: ./function/main
+          path: ./function_go/main
     services:
       localstack:
         image: localstack/localstack:latest

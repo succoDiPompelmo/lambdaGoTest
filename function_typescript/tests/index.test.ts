@@ -31,6 +31,8 @@ describe('testing index file', () => {
     const command = new PutObjectCommand(input);
     await client.send(command);
 
+    client.destroy()
+
     let request_body: S3ObjectCreatedNotificationEvent = {
       id: "",
       version: "",
@@ -43,6 +45,8 @@ describe('testing index file', () => {
       "detail-type": "Object Created"
     }
 
-    expect(await handleRequest(request_body)).toStrictEqual({"attachments": [], "date": new Date("2023-03-22T17:30:42.000Z"), "from": ["noreply@event.eventbrite.com"], "subject": "Logistica per Concorrenza strutturata e coroutine in Java e Kotlin", "text": "", "to": ["zenari12@gmail.com"]});
+    let response = await handleRequest(request_body);
+
+    expect(response).toStrictEqual({"attachments": [], "date": new Date("2023-03-22T17:30:42.000Z"), "from": ["noreply@event.eventbrite.com"], "subject": "Logistica per Concorrenza strutturata e coroutine in Java e Kotlin", "text": "", "to": ["zenari12@gmail.com"]});
   });
 });

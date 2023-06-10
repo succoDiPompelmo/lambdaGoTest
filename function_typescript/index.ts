@@ -2,13 +2,13 @@ import {S3ObjectCreatedNotificationEvent} from "aws-lambda/trigger/s3-event-noti
 import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3";
 
 import {AddressObject, ParsedMail, simpleParser} from 'mailparser';
-import Connection from "rabbitmq-client";
+import Connection, { Publisher } from "rabbitmq-client";
   
 export async function handleRequest(event: S3ObjectCreatedNotificationEvent): Promise<Email | undefined> {
     const bucketName: string = event.detail.bucket.name
     const objectKey: string = event.detail.object.key
 
-    var client: S3Client = new S3Client({region: "us-east-1", endpoint: "http://localhost:4566", forcePathStyle: true});
+    const ctx = buildContext();
 
     const input = {
       Bucket: bucketName,
@@ -16,8 +16,7 @@ export async function handleRequest(event: S3ObjectCreatedNotificationEvent): Pr
     };
 
     const command = new GetObjectCommand(input);
-    const response = await client.send(command);
-
+    const response = await ctx.s3client.send(command);
     const s3File = await response.Body?.transformToString();
 
     if (s3File == undefined) {
@@ -25,34 +24,48 @@ export async function handleRequest(event: S3ObjectCreatedNotificationEvent): Pr
     }
 
     let parsed = await simpleParser(s3File);
-    console.log(parsed.attachments.pop()?.contentDisposition);
-
     const message = buildMessage(parsed)
 
-    // See API docs for all options
-    const rabbit = new Connection({
-      url: 'amqps://deduukdi:hGLNmhiL2tad6MsHC_4z1H0aKSO12I6R@chimpanzee.rmq.cloudamqp.com/deduukdi',
-      // wait 1 to 30 seconds between connection retries
-      retryLow: 1000,
-      retryHigh: 30000,
-    })
+    await ctx.publisher.publish({exchange: 'Events', routingKey: 'my_routing_key'}, message)
 
-    // See API docs for all options
-    const pro = rabbit.createPublisher({
-      // enable acknowledgements (resolve with error if publish is unsuccessful)
-      confirm: true,
-      // enable retries
-      maxAttempts: 2,
-      // ensure the existence of an exchange before we use it otherwise we could
-      // get a NOT_FOUND error
-      exchanges: [{exchange: 'Events', durable: true}]
-    })
-
-    await pro.publish(
-      {exchange: 'Events', routingKey: 'my_routing_key'},
-      message)
-
+    close(ctx)
+    
     return message
+}
+
+interface Context {
+  publisher: Publisher,
+  s3client: S3Client,
+  rabbit: Connection
+}
+
+function buildContext(): Context {
+
+  const client: S3Client = new S3Client({region: "us-east-1", endpoint: "http://localhost:4566", forcePathStyle: true});
+
+  const rabbit = new Connection({
+    url: 'amqps://deduukdi:hGLNmhiL2tad6MsHC_4z1H0aKSO12I6R@chimpanzee.rmq.cloudamqp.com/deduukdi',
+    retryLow: 1000,
+    retryHigh: 30000,
+  })
+
+  const pub = rabbit.createPublisher({
+    confirm: true,
+    maxAttempts: 2,
+    exchanges: [{exchange: 'Events', durable: true}]
+  })
+
+  return {
+    s3client: client,
+    publisher: pub,
+    rabbit: rabbit
+  }
+}
+
+function close(ctx: Context) {
+  ctx.publisher.close()
+  ctx.rabbit.close()
+  ctx.s3client.destroy()
 }
 
 interface Email {
@@ -70,7 +83,7 @@ interface Attachment {
   filename: string;
 }
 
-function buildMessage(parsedEmail: ParsedMail) {
+function buildMessage(parsedEmail: ParsedMail): Email {
   return {
     subject: parsedEmail.subject ?? "",
     from: parsedEmail.from?.value.map(fromAddress => {return fromAddress.address ?? ""}) ?? [],

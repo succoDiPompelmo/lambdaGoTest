@@ -20,6 +20,9 @@
 # Go workspace file
 go.work
 
+# Node modules
+node_modules
+
 # Py Cache
 *.pyc
 __pycache__/
@@ -29,3 +32,5 @@ venv/
 
 # Lambda code
 *.zip
+
+.DS_Store

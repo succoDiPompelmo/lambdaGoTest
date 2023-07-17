@@ -147,6 +147,14 @@ func newDocumentsEmailRecieved(email letters.Email) *DocumentsEmailRecieved {
 			ContentType:        e.ContentType.ContentType,
 			ContentDisposition: string(e.ContentDisposition.ContentDisposition),
 		}
+
+		for k, v := range e.ContentType.Params {
+			fmt.Println(k, "Content type params value is", v)
+		}
+
+		for k, v := range e.ContentDisposition.Params {
+			fmt.Println(k, "Content disposition params value is", v)
+		}
 	}
 
 	documentsEmailRecieved := &DocumentsEmailRecieved{
